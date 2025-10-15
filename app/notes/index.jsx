@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import {
-  FlatList,
   Modal,
   StyleSheet,
   Text,
@@ -8,6 +7,8 @@ import {
   TouchableOpacity,
   View
 } from 'react-native'
+
+import NoteList from '@/components/NotesList'
 
 const NoteScreen = () => {
 
@@ -31,15 +32,9 @@ const NoteScreen = () => {
 
   return (
     <View style={styles.container}>
-      <FlatList 
-        data={notes}
-        keyExtractor={(item)=> item.id}
-        renderItem={({item}) => (
-          <View style={styles.noteItem}>
-            <Text style={styles.noteText}>{item.text}</Text>
-          </View>
-        )}
-      />
+      {/* FLATLIST */ }
+      <NoteList notes={notes} />
+
       <TouchableOpacity 
         style={styles.addButton} 
         onPress={()=> setModalVisible(true)}
