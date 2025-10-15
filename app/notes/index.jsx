@@ -11,14 +11,23 @@ import {
 
 const NoteScreen = () => {
 
-  const [notes, setNotes] = useState([
-    {id: '1', text: "nota uno"},
-    {id: '2', text: "nota dos"},
-    {id: '3', text: "nota tres"},
-  ])
+  const [notes, setNotes] = useState([])
 
   const [modalVisible, setModalVisible] = useState(false)
   const [newNote, setNewNote] = useState('')
+
+  //Creamos la funcion addNewNote
+  const addNewNote = () => {
+    if(newNote.trim() === '') return
+
+    setNotes((prevNotes) => [
+      ...prevNotes,
+      {id: Date.now().toString(), text: newNote}
+    ])
+
+    setNewNote('')
+    setModalVisible(false)
+  }
 
   return (
     <View style={styles.container}>
@@ -68,7 +77,7 @@ const NoteScreen = () => {
               {/* Boton Aceptar */}
               <TouchableOpacity 
                 style={styles.saveButton}
-                onPress={()=>console.log('hola mundo')}
+                onPress={addNewNote}
               >
                 <Text style={styles.saveButtonText}>Agregar</Text>
               </TouchableOpacity>
@@ -94,7 +103,7 @@ const styles = StyleSheet.create({
     noteItem: {
       flexDirection: 'row',
       justifyContent: 'space-between',
-      backgroundColor: '#7d4d0480',
+      backgroundColor: '#c4c2c2ff',
       padding:15,
       borderRadius:5,
       marginVertical:5
@@ -107,7 +116,7 @@ const styles = StyleSheet.create({
       bottom: 50,
       left: 20,
       right:20,
-      backgroundColor: '#666',
+      backgroundColor: '#007bff',
       padding:15,
       borderRadius:5,
       alignItems:'center'
