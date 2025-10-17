@@ -58,20 +58,9 @@ export default NoteScreen
 
 const styles = StyleSheet.create({
     container:{
-        flex:1,
-        padding:20,
-        backgroundColor: '#fff'
-    },
-    noteItem: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      backgroundColor: '#c4c2c2ff',
-      padding:15,
-      borderRadius:5,
-      marginVertical:5
-    },
-    noteText: {
-      fontSize:18
+      flex:1,
+      padding:20,
+      backgroundColor: '#fff'
     },
     addButton: {
       position: 'absolute',
